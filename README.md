@@ -63,3 +63,11 @@ Vendor Performance & Cost Optimization Analysis/
 ## Why This Project Stands Out
 
 The case study is positioned like a supplier-review engagement rather than a classroom exercise. It reflects Rahul Sehrawat's operations experience in vendor coordination, follow-through, and procurement control, then translates that perspective into structured analytics and decision support.
+
+## Dataset Note
+
+The original datasets used in this project were large and simulated real-world business scenarios.
+
+Due to GitHub file size limitations, full datasets are not included in this repository.
+
+However, all analysis, processed outputs, and insights are fully available to demonstrate the complete workflow and business impact.
