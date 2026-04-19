@@ -2,34 +2,22 @@
 
 ## Executive Summary
 
-The supplier portfolio is commercially strong overall, but its quality is uneven. Revenue and spend are concentrated in a narrow vendor group, inventory exposure is meaningful, and a portion of the supplier base is destroying value after adjusted profit is considered.
+The vendor portfolio is commercially attractive overall, but value is concentrated and inventory exposure is heavier than a leadership team would want. The upgraded workflow shows which suppliers deserve strategic investment, which require renegotiation, and where working capital is being trapped.
 
-## Key Findings
+## Five Key Insights
 
-### 1. Concentration risk is high
+1. The portfolio generated **$452.06M** in revenue and **$128.52M** in adjusted profit across **129 vendors**.
+2. The top 10 vendors account for **64.99%** of total revenue, creating clear concentration risk.
+3. Ending inventory stands at **4.77M units**, with **$54.41M** flagged as inventory at risk.
+4. **14 vendors** are negative on adjusted profit, and the pipeline now produces a ranked **25-vendor watchlist** for management action.
+5. Classification `1` is the larger revenue engine, while Classification `2` contributes stronger profit quality relative to its scale.
 
-The top 10 vendors account for about **65%** of both spend and revenue. That dependence increases pricing and continuity risk if a small group of suppliers underperforms.
+## Three Business Recommendations
 
-### 2. Inventory imbalance is financially significant
+- Build a tiered vendor playbook that protects `High Impact` suppliers and actively manages `Critical` suppliers.
+- Target inventory-heavy and low-sell-through vendors first for PO frequency, assortment, and negotiation changes.
+- Use the watchlist as a monthly commercial review input instead of relying on annual supplier cleanup.
 
-The analysis identified **$15.6M** in inventory at risk and **1.34M** unsold units, showing that purchasing discipline is not fully aligned with sell-through.
+## Business Impact Statement
 
-### 3. A measurable share of the supplier base is margin-destructive
-
-**16 vendors** generate negative adjusted profit. These relationships consume budget, attention, and storage capacity without adequate commercial return.
-
-### 4. The strongest suppliers combine scale and efficiency
-
-The best vendors do not only sell volume. They also convert cost into profit more effectively and show stronger operating quality.
-
-### 5. Category economics are uneven
-
-Classification **2** delivers better adjusted margin quality than Classification **1**, creating a clear mix and allocation opportunity.
-
-## Recommendations
-
-- use a tiered supplier strategy built around strategic, review, and rationalization groups
-- target inventory-heavy vendors first for tighter purchasing control
-- renegotiate or narrow negative-profit relationships
-- review large but margin-light suppliers for pricing, brand mix, and freight efficiency
-- use category economics to guide future procurement focus
+If inventory at risk is reduced by **10%**, the business could free approximately **$5.44M** in working capital.

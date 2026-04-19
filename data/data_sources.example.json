@@ -1,0 +1,25 @@
+{
+  "local_data_dirs": [
+    "~/Desktop/Downloads/data"
+  ],
+  "direct_urls": {
+    "purchases.csv": "",
+    "sales.csv": "",
+    "purchase_prices.csv": "",
+    "vendor_invoice.csv": "",
+    "begin_inventory.csv": "",
+    "end_inventory.csv": ""
+  },
+  "google_drive_file_ids": {
+    "purchases.csv": "",
+    "sales.csv": "",
+    "purchase_prices.csv": "",
+    "vendor_invoice.csv": "",
+    "begin_inventory.csv": "",
+    "end_inventory.csv": ""
+  },
+  "kaggle": {
+    "dataset": "",
+    "notes": "If you use Kaggle, unzip the dataset into data/raw/ with the same filenames expected by the project."
+  }
+}

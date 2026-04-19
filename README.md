@@ -1,73 +1,160 @@
 # Vendor Performance & Cost Optimization Analysis
 
-This project evaluates supplier performance as a commercial portfolio rather than a simple spend report. It was built by **Rahul Sehrawat**, **Assistant Manager (Operations)**, to demonstrate how procurement, sales, freight, and inventory signals can be converted into vendor decisions that improve margin quality and reduce working-capital pressure.
+## Business Problem
 
-## Business Objective
+Procurement teams often know who they buy from, but not which vendors are truly creating commercial value after freight, inventory drag, and sell-through quality are considered. This project reframes vendor reporting into an executive supplier portfolio review suitable for consulting, FMCG, retail, and operations analytics roles.
 
-The analysis is designed to answer four practical leadership questions:
+## Objective
 
-- which vendors create strong commercial value
-- where supplier concentration is creating dependency risk
-- which relationships carry cost without proportional return
-- where purchasing is running ahead of sell-through
+Build an end-to-end vendor analytics workflow that:
 
-## Project Snapshot
+- resolves large local-only raw files without uploading them to GitHub
+- cleans and combines procurement, sales, pricing, freight, and inventory data
+- scores vendors on profitability, scale, service quality, and sell-through
+- exports recruiter-friendly outputs for SQL, dashboards, and business review
 
-| Area | Details |
-|---|---|
-| Project Name | Vendor Performance & Cost Optimization Analysis |
-| Domain | FMCG / beverage procurement and supplier analytics |
-| Source Files | Purchases, sales, pricing, inventory, and invoice data |
-| Tools Used | Python, Pandas, SQLite, SQL, Power BI |
-| Positioning | Margin analysis, supplier review, inventory risk, cost optimization |
+## Dataset Strategy
 
-## Workflow
+- Full raw dataset: stored locally in `data/raw/` and excluded from GitHub
+- GitHub-safe sample files: stored in `data/sample/`
+- Processed outputs: written to `data/processed/`
+- Automated ingestion options:
+  - local-first via `VENDOR_DATA_DIR`
+  - Google Drive via `data/data_sources.json`
+  - Kaggle via `data/data_sources.json`
+  - sample fallback if full raw files are unavailable
 
-1. Raw procurement, pricing, and sales data is consolidated in Python.
-2. Curated vendor-level summary tables are generated for repeatable analysis.
-3. SQL translates the curated data into scorecards, watchlists, and executive views.
-4. Reports and dashboard notes package the findings for leadership review.
+Raw files expected by the project:
 
-## Headline Insights
+- `purchases.csv`
+- `sales.csv`
+- `purchase_prices.csv`
+- `vendor_invoice.csv`
+- `begin_inventory.csv`
+- `end_inventory.csv`
 
-- The portfolio generated **$452.1M** in revenue and **$128.5M** in adjusted profit.
-- The top 10 suppliers control roughly **65%** of spend and revenue, creating a clear concentration risk.
-- Inventory-at-risk totals **$15.6M**, with **1.34M unsold units** still tied up in stock.
-- **16 vendors** produce negative adjusted profit and require commercial review.
-- Classification **2** converts revenue into margin more effectively than Classification **1**.
-
-## Repository Structure
+## Project Structure
 
 ```text
 Vendor Performance & Cost Optimization Analysis/
-├── data/
-├── python/
-├── sql/
+├── assets/
 ├── dashboard/
+├── data/
+│   ├── raw/
+│   ├── sample/
+│   └── processed/
+├── notebooks/
 ├── reports/
+├── scripts/
+│   └── sql/
 ├── README.md
-└── project_storyline.md
+└── requirements.txt
 ```
 
-## Key Files
+## Methodology
 
-- `python/build_vendor_performance_assets.py`
-- `python/exploratory_data_analysis.ipynb`
-- `python/vendor_performance_analysis.ipynb`
-- `sql/vendor_performance_cost_optimization_queries.sql`
-- `dashboard/dashboard_brief.md`
-- `dashboard/vendor_performance_cost_optimization.pbix`
-- `reports/business_problem_report.md`
-- `reports/final_insights_report.md`
+1. Bootstrap raw data from local storage, Google Drive, Kaggle, or sample files.
+2. Clean transaction, price reference, invoice, and inventory snapshots.
+3. Join procurement and sales data at vendor-brand-category level.
+4. Integrate beginning and ending inventory snapshots to strengthen inventory risk measurement.
+5. Calculate vendor KPIs including adjusted profit, adjusted margin, sell-through, stock turnover, and concentration share.
+6. Score vendors into `High Impact`, `Stable`, `Watchlist`, and `Critical` performance tiers.
+7. Export analytics tables, SQLite-ready CSVs, and dashboard assets.
 
-## Why This Project Stands Out
+## KPIs Used
 
-The case study is positioned like a supplier-review engagement rather than a classroom exercise. It reflects Rahul Sehrawat's operations experience in vendor coordination, follow-through, and procurement control, then translates that perspective into structured analytics and decision support.
+- Total Revenue
+- Total Procurement Cost
+- Adjusted Profit
+- Adjusted Profit Margin
+- Inventory at Risk
+- Ending Inventory Units
+- Sell-Through Rate
+- Stock Turnover
+- Revenue Share by Vendor
+- Vendor Performance Score
 
-## Dataset Note
+## Key Insights
 
-The original datasets used in this project were large and simulated real-world business scenarios.
+- The portfolio generated **$452.06M** in revenue and **$128.52M** in adjusted profit across **129 vendors**.
+- The top 10 vendors contribute **64.99%** of total revenue, highlighting material supplier concentration risk.
+- Ending inventory reached **4.77M units**, with **$54.41M** flagged as inventory at risk.
+- **14 vendors** are currently negative on adjusted profit, and the action watchlist has been narrowed to the top **25** commercial risk cases.
+- Classification `1` drives more revenue, but Classification `2` delivers stronger adjusted-profit quality with lower inventory burden.
 
-Due to GitHub file size limitations, full datasets are not included in this repository.
+## Business Recommendations
 
-However, all analysis, processed outputs, and insights are fully available to demonstrate the complete workflow and business impact.
+- Launch a tiered supplier strategy that separates strategic vendors from renegotiation and rationalization candidates.
+- Prioritize inventory-heavy and low-sell-through suppliers for purchasing controls, order-frequency changes, and commercial review.
+- Protect the top `High Impact` vendors with tighter forecasting and service management because they drive a disproportionate share of the profit pool.
+
+## Measurable Business Impact
+
+Reducing inventory at risk by **10%** would release approximately **$5.44M** in working capital without requiring additional revenue growth.
+
+## Dashboard Screenshots
+
+Executive asset generated from the pipeline:
+
+![Vendor Portfolio Overview](assets/vendor_portfolio_overview.png)
+
+Existing dashboard preview:
+
+![Vendor Dashboard Preview](assets/dashboard_preview.png)
+
+## How To Run
+
+### 1. Install dependencies
+
+```bash
+python3 -m pip install -r requirements.txt
+```
+
+### 2. Choose a data path
+
+Option A: local raw data already available
+
+```bash
+python3 scripts/bootstrap_data.py
+```
+
+Option B: configure Google Drive or Kaggle
+
+```bash
+cp data/data_sources.example.json data/data_sources.json
+python3 scripts/bootstrap_data.py
+```
+
+Option C: run with GitHub-safe sample data only
+
+```bash
+python3 scripts/run_pipeline.py
+```
+
+### 3. Run the full pipeline
+
+```bash
+python3 scripts/run_pipeline.py
+```
+
+### 4. Export recruiter-facing chart assets
+
+```bash
+python3 scripts/export_dashboard_assets.py
+```
+
+## Main Outputs
+
+- `data/processed/vendor_performance_summary.csv`
+- `data/processed/vendor_brand_performance.csv`
+- `data/processed/vendor_category_performance.csv`
+- `data/processed/category_performance_summary.csv`
+- `data/processed/vendor_watchlist.csv`
+- `data/processed/vendor_tier_summary.csv`
+- `data/processed/vendor_performance.db`
+
+## Why This Project Is Portfolio-Ready
+
+- Solves the GitHub large-file problem cleanly without uploading raw data.
+- Demonstrates analyst skills across data engineering, KPI design, risk scoring, SQL, and business storytelling.
+- Produces outputs that are easy for recruiters, hiring managers, and dashboard reviewers to inspect quickly.
